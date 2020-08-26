@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+    Created on : 18.08.2020, 21:36:47
+    Author     : Justus
+-->
+<html>
+    <head>
+        <title>Yardstick-Rechner</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="indexstyle.css">
+        <script src="Calcscript.js"></script>
+    </head>
+    <body>
+        <div id = "header">
+            <h2>Yardstick-Rechner</h2>
+        </div>
+        <div id = toolbar>
+            <button class="toolbutton" onclick="addCalc()" type="button" id="add">Neue Zelle</button>
+            <button class="toolbutton" onclick="sortByCountTime()" type="button" id="sort">Sortieren</button>
+            <button class="toolbutton" onclick="removeCalc()" type="button" id="clear">Löschen</button>
+        </div>
+        <div id = "content"><div class = "Calculator">
+                <form class="grid-container">
+                    <span class="grid-element">
+                        <label id="namelabel" for = "name">
+                            Name
+                        </label>
+                        <input id="name">
+                    </span>
+                    <span class="grid-element">
+                        <label id="yardsticklabel" for="yardstick">
+                            Yardstickzahl
+                        </label>
+                        <input oninput="calculate(event)" onchange="calculate(event)" type="number" min="50" max="300" step="1" class="yardstick" id="yardstick">
+                    </span>
+                    <span class="grid-element">
+                        <label id="gemlabel" for="gem">
+                            Gemessene Zeit
+                        </label>
+                        <input oninput="calculate(event)" onchange="calculate(event)" max="11:59:59" type="time" class="gem" id ="gem" step = 1 value="00:00:00">
+                    </span>
+                    <span class="grid-element">
+                        <label id="zähllabel" for="zähl">
+                            Zählende Zeit
+                        </label>
+                        <input type="time" class ="zähl" id ="zähl" step = 1 readonly>
+                    </span>
+                </form>
+            </div></div>
+    </body>
+</html>

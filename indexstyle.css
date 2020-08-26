@@ -1,0 +1,53 @@
+/* 
+    Created on : 18.08.2020, 21:36:47
+    Author     : Justus
+*/
+body{
+    background-color: red;
+}
+h2{
+    text-align:  center;
+}
+.Calculator{
+    border: 2px solid orange;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 5px;
+}
+.grid-element{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+}
+.grid-element>label{
+    display: table-cell;
+}
+.grid-element>input{
+    display: table-cell;
+}
+#toolbar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.toolbutton{
+    width: 100px;
+    height: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+#add{
+    
+}
+#sort{
+    
+}
+#clear{
+    
+}
