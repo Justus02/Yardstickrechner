@@ -27,7 +27,7 @@ function calctotalsecs(hours,mins,secs)
 }
 function calculatecountsecs(secs,yardstick)
 {
-    return Math.floor(secs/yardstick*100);
+    return secs/yardstick*100;
 }
 function calculatestring(secs)
 {
