@@ -86,50 +86,31 @@ function removeCalc()
 function sortByCountTime()
 {
     var calcs = window.parenttoCalc.childNodes;
-    var origcalcs = [...calcs];
-    var sequence = [];
-    var countTimes = [];
-    var orderedTimes = [];
-    for(let i=0;i<calcs.length;i++)
+    var copycalcs = [...calcs];
+    copycalcs.sort(compareCalcs);
+    for(let i=0;i<copycalcs.length;i++)
     {
-        let curTime = calcs[i].getElementsByClassName("zähl")[0].value;
-        var valuewithout = curTime.replace(/:/g,'');
+        calcs[i].parentNode.appendChild(copycalcs[i]);
+    }
+}
+function compareCalcs(Calc1,Calc2)
+{
+    firstStringValue = Calc1.getElementsByClassName("zähl")[0].value;
+    firstTotal = getTotalSecondsFromString(firstStringValue);
+    secondStringValue = Calc2.getElementsByClassName("zähl")[0].value;
+    secondTotal = getTotalSecondsFromString(secondStringValue);
+    return firstTotal - secondTotal;
+}
+function getTotalSecondsFromString(curTime)
+{
+    var valuewithout = curTime.replace(/:/g,'');
         if(valuewithout.length !== 6 )
         {   
-            countTimes.push(86400);
-            continue;
+            return 86400;
         }
         var hours = parseInt(valuewithout.substr(0,2));
         var mins = parseInt(valuewithout.substr(2,2));
         var secs = parseInt(valuewithout.substr(4,2));
         var total = calctotalsecs(hours,mins,secs);
-        countTimes.push(total);
-    }
-    orderedTimes = [...countTimes];
-    orderedTimes.sort(function(a, b){return a - b;});
-    for(let i=0;i<countTimes.length;i++)
-    {
-        //get how many times the value at index i already appeared
-        //in countTimes
-        var count = 0;
-        if(i !== 0)
-        { 
-            for(let j=0;j<i;j++)
-            {
-                if(countTimes[j] === countTimes[i])
-                {
-                    count++;
-                }
-            }
-        }
-        
-        //get first index of countTimes[i] in orderedTimes
-        
-        var firstindex = orderedTimes.indexOf(countTimes[i]);
-        sequence.push(firstindex+count);
-    }
-    for(let i=0;i<calcs.length;i++)
-    {
-        window.parenttoCalc.childNodes[sequence[i]].after(origcalcs[i]);
-    }
+        return total;
 }
