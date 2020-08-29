@@ -24,16 +24,12 @@ h2{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
 }
-.grid-element>label{
-    display: table-cell;
-}
-.grid-element>input{
-    display: table-cell;
-}
+
 #toolbar{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 .toolbutton{
     width: 100px;
@@ -42,12 +38,36 @@ h2{
     border-radius: 10px;
     border-color: transparent;
 }
-#add{
-    
+@media only screen and (max-width: 375px)
+{
+    #toolbar{
+        flex-direction: column;
+    }
 }
-#sort{
-    
+@media only screen and (max-width: 289px)
+{
+    .grid-element{
+        grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+    }
+    .grid-container{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
 }
-#clear{
-    
+@media only screen and (max-width: 250px)
+{
+    .grid-element{
+        grid-template-columns: none;
+    }
+    .grid-container{
+        grid-template-columns: none;
+    }
+}
+@media only screen and (max-width: 220px)
+{
+    .grid-element{
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .grid-container{
+        grid-template-columns: none;
+    }
 }
